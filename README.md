@@ -31,6 +31,7 @@ This dashboard is fully interactive. You can explore the data by using the filte
 
 
 -   **Live Dashboard Link:** https://public.tableau.com/shared/XHB5TY68F?:display_count=n&:origin=viz_share_link
+-   **Tableau Public Link:** https://public.tableau.com/app/profile/kaviya.mahendran/vizzes
 
 ### Files in this Repository
 -   `charity_shop_performance.csv`: The raw dataset used for this project.
