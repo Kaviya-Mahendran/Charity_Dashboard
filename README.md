@@ -1,38 +1,101 @@
 # Charity Shop Performance Dashboard
 
-### Project Summary
-This project is a performance dashboard designed for a charity shop, created using data from a mock retail database. The goal is to provide key insights into operational performance, sales trends, and donor behavior to help management make data-driven decisions.
+**A. Project Overview**
+This repository contains a complete Power BI driven dashboard analytics solution for charity data. The goal is to move beyond static reports and spreadsheets toward an interactive, repeatable, and decision focused dashboard that helps stakeholders understand key patterns in donor behaviour, sentiment, and organisational characteristics.
+Unlike dashboards that are built to “look nice,” this one is designed to highlight:
+What drives donor engagement?
+How do sentiments vary across categories?
+Which charity segments show different trends?
+Where intervention or focus can improve impact?
+This project integrates structured data from ELT/ETL pipelines, NLP outputs, and performance optimized measures to create a dashboard that supports evidence based decision making.
+Although implementations vary across organisations, these principles apply broadly to most data analytics environments.
 
-### Problem Statement
-The charity shop, with multiple locations and various donation channels, lacks a centralized way to monitor its performance. Key business questions, such as "What are our best-performing locations?" and "What product categories are most profitable?" are difficult to answer without a clear, visual dashboard. This project addresses these needs.
+**B. System Architecture Diagram**
+Here’s how the dashboard fits into a larger analytics pipeline:
 
-### Methodology
-The dashboard was built using **[Tool Used, e.g., Power BI or Tableau Public]**. The process included:
-1.  **Data Connection**: The `charity_shop_performance.csv` file was loaded.
-2.  **Data Modeling**: The data was reviewed for accuracy and prepared for analysis.
-3.  **Key Performance Indicators (KPIs)**: Several KPIs were created to track financial and operational performance, including Total Sales, Sales by Location, and Revenue by Payment Method.
-4.  **Interactive Dashboard Design**: Visualizations were arranged on a single dashboard with interactive filters for easy exploration.
+Data Sources
+   ↓
+ETL / ELT Pipeline
+  (cleaning & shaping)
+   ↓
+Analytics Dataset
+   ↓
+Power BI Data Model
+   ↓
+Interactive Dashboard
+   ↓
+Stakeholder Insights
+This architecture ensures that the dashboard sits on clean, governed, and reusable data structures, not raw or one off extracts.
 
-#### Overall Sales Trend
-This line chart shows total sales over time, revealing seasonal trends and peak performance periods.
-![Sales Trend over Time](https://public.tableau.com/views/overallsalestrend/Sheet5?:language=en-US&publish=yes&:sid=&showOnboarding=true&:display_count=n&:origin=viz_share_link)
+**C. Step by Step Workflow Explanation**
+**Step 1: Prepare the Data Model**
+The dashboard’s backbone is a clean analytical data model. Before loading into Power BI:
+All datasets are transformed into tidy tables
+Keys and relationships are clearly defined
+Grain of each fact table is explicit
+This stage ensures filters, slicers, and visuals behave predictably.
 
-#### Performance by Shop Location
-This chart ranks shop locations by total sales, identifying top-performing stores.
-![Sales by Shop Location Chart](https://public.tableau.com/views/performancebylocation/Sheet6?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+**Step 2: Import into Power BI
+Within the .pbix file:**
+Tables are loaded using Power Query
+Data types are enforced
+Relationships are set to many to one, avoiding unnecessary cross filters
+This makes the model reliable and scalable.
 
-#### Payment Method Distribution
-This visualization breaks down sales by payment method, helping to understand customer payment preferences.
-![Payment Method Chart](https://public.tableau.com/views/Paymentdistribution/Sheet7?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+**Step 3: Define Measures Using DAX**
+Key performance indicators (KPIs) are defined using DAX measures rather than calculated columns. This ensures:
+performance is optimised
+context changes safely with slicers
+calculations are consistent across visuals
+Example measure:
 
-### How to Use the Dashboard
-This dashboard is fully interactive. You can explore the data by using the filters on the right-hand side to select a specific shop location, category, or time period.
-![Full Dashboard with Filters](https://public.tableau.com/views/dashboardforeachlocation/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link))
+Total Donors :=
+DISTINCTCOUNT ( dim_donor[donor_id] )
+This measure becomes reusable throughout the dashboard.
+
+**Step 4: Build Visuals Aligned to Questions**
+Visuals are designed with specific analytical questions in mind:
+Time trends for donation patterns
+Cohort retention charts
+Sentiment distributions by category
+Segment performance comparisons
+Each visual is built to support a decision, not just display a number.
+
+**Step 5: Validate Interactivity and Logic**
+Before publishing:
+Filters are tested
+Totals are validated against source data
+Edge cases (nulls, missing data) are handled
+This validation ensures the dashboard doesn’t break under real user interaction.
+
+**D. Why This Matters**
+Reduces manual reporting
+Instead of pulling spreadsheets and manually updating charts, stakeholders have a dynamic interface with built in filters and logic.
+Supports evidence based decisions
+This dashboard shows not just outcomes (like totals) but drivers (patterns over time, behaviour by segment, sentiment variation). It allows teams to ask why as well as what.
+Enables scaled insights
+With consistent measures, interactive exploration, and governed data, this dashboard becomes part of the organisation’s analytical infrastructure usable across teams and over time.
+Although implementations vary across organisations, these principles apply broadly to most data analytics environments.
+
+**E. Reflection & Learnings**
+Building this dashboard reinforced that useful dashboards are not about visuals; they are about questions.
+Some core learnings from this process:
+Measure definitions must be centralised. When KPIs are defined once in DAX, not repeatedly in visuals, truth becomes consistent.
+Data models should force discipline, not flexibility. A right sized model makes analytics safer and faster.
+Testing interactivity matters as much as building visuals. A well designed filter should not break the logic of a chart.
+From a leadership perspective, this project illustrates a transition from reporting to analytical product thinking. The dashboard is not a static artefact; it is a living interface between data and decisions.
+For analysts, the key takeaway is to design dashboards for questions, not charts and to build the underlying models before building the visuals.
+
+**How to Use This Repository**
+Clone the repository
+
+git clone https://github.com/Kaviya Mahendran/Charity_Dashboard
+Open the .pbix file in Power BI Desktop
+Ensure that data sources are accessible and paths are correctly configured
+Refresh the data
+Explore the interactive reports and filters
+
+**Final Note**
+This dashboard is not just a visualisation; it’s a decision support system grounded in clean data, strong modelling, and thoughtful design. It reflects a shift toward analytics that can be extended, maintained, and owned over time not just delivered once.
 
 
--   **Live Dashboard Link:** https://public.tableau.com/shared/XHB5TY68F?:display_count=n&:origin=viz_share_link
--   **Tableau Public Link:** https://public.tableau.com/app/profile/kaviya.mahendran/vizzes
-
-### Files in this Repository
--   `charity_shop_performance.csv`: The raw dataset used for this project.
--   `charity_shop_dashboard.twbx` The Tableau project file.
