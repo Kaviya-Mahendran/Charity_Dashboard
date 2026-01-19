@@ -1,6 +1,8 @@
 # Charity Shop Performance Dashboard
 
 **A. Project Overview**
+
+
 This repository contains a complete Power BI driven dashboard analytics solution for charity data. The goal is to move beyond static reports and spreadsheets toward an interactive, repeatable, and decision focused dashboard that helps stakeholders understand key patterns in donor behaviour, sentiment, and organisational characteristics.
 Unlike dashboards that are built to “look nice,” this one is designed to highlight:
 What drives donor engagement?
